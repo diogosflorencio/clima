@@ -25,7 +25,7 @@ O projeto ainda está em desenvolvimento, e as próximas atualizações serão f
 
 ## 💻 Pré-requisitos
 
-Não há pré-requisitos. Basta clicar no link:  [Calculadora](https://diogosflorencio.github.io/clima).
+Não há pré-requisitos. Basta clicar no link:  [Clima](https://diogosflorencio.github.io/clima).
 
 ## 🚀 Iniciando projeto "Clima"
 
