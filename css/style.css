@@ -55,3 +55,9 @@
     background-color: black;
     color: white;
 }
+
+@media (max-width: 600px){
+    .tela-inicial{
+        position: absolute;
+    }
+}
