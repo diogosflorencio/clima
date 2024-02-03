@@ -4,6 +4,7 @@ const telaConteudo = document.getElementsByClassName("tela-conteudo")[0]
 
 botaoPesquisar.onclick = () =>{
     pesquisaCidade(input.value);
+    mudaTela();
 }
 input.addEventListener("keydown", (event) => {
     if(event.key == "Enter"){
@@ -25,4 +26,12 @@ const pesquisaCidade = (param) => {
     .then(dados => {
         buscaInfos(dados[0].lat, dados[0].lon);
     })
+}
+
+const tamanhoTela = window.matchMedia("(max-width: 600px)");
+
+const mudaTela = () => {
+    if(tamanhoTela.matches){
+        telaConteudo.style.position = "absolute";
+    }
 }
