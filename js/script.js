@@ -4,6 +4,7 @@ const telaConteudo = document.querySelector(".tela-conteudo")
 const telaIncial = document.querySelector(".tela-inicial")
 const container = document.querySelector(".container")
 const localizacao = document.querySelector(".localizacao")
+const imagemTempo = document.getElementById("imagem-tempo");
 
 botaoPesquisar.onclick = () =>{
     pesquisaCidade(input.value);
@@ -21,9 +22,32 @@ const buscaInfos = (param1, param2) => {
     .then(dados => dados.json())
     //.then(dados => telaConteudo.innerHTML = dados.name)
     .then(dados => {
-        console.log(dados)
-        const cidade = document.createElement("p");
-        cidade.innerHTML = dados.name
+        console.log(dados);
+        itensLocalizacao(dados);
+        icones(dados);
+    })
+}
+
+const icones = (param) => {
+    const icone = document.createElement("img");
+    if(param.weather[0].icon.slice(-1) == "n"){
+        if(param.weather[0].id >= 801 && param.weather[0].id <= 804){
+            icone.src = "../img/nuvens-noite.png" 
+        }
+    }else{
+        if(param.weather[0].id >= 000 && param.weather[0].id <= 804){
+            icone.src = "../img/nuvens-dia.png" 
+        }
+    }
+    
+    imagemTempo.appendChild(icone);
+
+}
+
+const itensLocalizacao = (param) => {
+    const cidade = document.createElement("p");
+        cidade.classList = "cidade";
+        cidade.innerHTML = param.name;
         localizacao.appendChild(cidade);
 
         const data = document.createElement("p");
@@ -52,11 +76,9 @@ const buscaInfos = (param1, param2) => {
             'Dezembro'
           ]
         data.innerHTML = `${dias[d.getDay()]}, ${d.getDay()} ${meses[d.getMonth()]}`
+        data.classList = "data";
         localizacao.appendChild(data);
-
-    })
 }
-
 const pesquisaCidade = (param) => {
     const endpoint2 = `https://api.openweathermap.org/geo/1.0/direct?q=${param}&appid=e9d7d8e62d3d6b589222dfdc4648be38`
     fetch(endpoint2)
