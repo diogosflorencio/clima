@@ -1,8 +1,9 @@
 const input = document.getElementById("input");
 const botaoPesquisar = document.getElementById("botao-pesquisar");
-const telaConteudo = document.getElementsByClassName("tela-conteudo")[0] 
-const telaIncial = document.getElementsByClassName("tela-inicial")[0] 
-const container = document.getElementsByClassName("container")[0] 
+const telaConteudo = document.querySelector(".tela-conteudo")
+const telaIncial = document.querySelector(".tela-inicial")
+const container = document.querySelector(".container")
+const localizacao = document.querySelector(".localizacao")
 
 botaoPesquisar.onclick = () =>{
     pesquisaCidade(input.value);
@@ -19,7 +20,41 @@ const buscaInfos = (param1, param2) => {
     fetch(endpoint)
     .then(dados => dados.json())
     //.then(dados => telaConteudo.innerHTML = dados.name)
-    .then(dados => console.log(dados))
+    .then(dados => {
+        console.log(dados)
+        const cidade = document.createElement("p");
+        cidade.innerHTML = dados.name
+        localizacao.appendChild(cidade);
+
+        const data = document.createElement("p");
+        const d = new Date();
+        const dias = [
+            'Dom',
+            'Seg',
+            'Ter',
+            'Qua',
+            'Qui',
+            'Sex',
+            'Sáb'
+        ]
+        const meses = [
+            'Janeiro',
+            'Fevereiro',
+            'Março',
+            'Abril',
+            'Maio',
+            'Junho',
+            'Julho',
+            'Agosto',
+            'Setembro',
+            'Outubro',
+            'Novembro',
+            'Dezembro'
+          ]
+        data.innerHTML = `${dias[d.getDay()]}, ${d.getDay()} ${meses[d.getMonth()]}`
+        localizacao.appendChild(data);
+
+    })
 }
 
 const pesquisaCidade = (param) => {
@@ -36,6 +71,7 @@ const tamanhoTela = window.matchMedia("(max-width: 600px)");
 const mudaTela = () => {
     if(tamanhoTela.matches){
         telaConteudo.style.position = "absolute";
+        telaIncial.style.display = "none";
     }
 }
 
