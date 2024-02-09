@@ -85,8 +85,14 @@
 }
 
 #imagem-tempo{
-
-
+ 
+}
+.icone{
+    width: 110%;
+}
+.temp{
+    color: white;
+    font-size: 92px;
 }
 @media (max-width: 600px){
     .tela-inicial{
