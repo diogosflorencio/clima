@@ -45,39 +45,44 @@ const icones = (param) => {
 }
 
 const itensLocalizacao = (param) => {
-    const cidade = document.createElement("p");
-        cidade.classList = "cidade";
-        cidade.innerHTML = param.name;
-        localizacao.appendChild(cidade);
+    const imagemLocalizacao = document.createElement("img");
+    imagemLocalizacao.classList = "icone-localizao";
+    imagemLocalizacao.src = "img/icones-pesquisa/localizacao.png";
+    localizacao.append(imagemLocalizacao);
 
-        const data = document.createElement("p");
-        const d = new Date();
-        const dias = [
-            'Dom',
-            'Seg',
-            'Ter',
-            'Qua',
-            'Qui',
-            'Sex',
-            'Sáb'
-        ]
-        const meses = [
-            'Janeiro',
-            'Fevereiro',
-            'Março',
-            'Abril',
-            'Maio',
-            'Junho',
-            'Julho',
-            'Agosto',
-            'Setembro',
-            'Outubro',
-            'Novembro',
-            'Dezembro'
-          ]
-        data.innerHTML = `${dias[d.getDay()]}, ${d.getDay()} ${meses[d.getMonth()]}`
-        data.classList = "data";
-        localizacao.appendChild(data);
+    const cidade = document.createElement("p");
+    cidade.classList = "cidade";
+    cidade.innerHTML = param.name;
+    localizacao.appendChild(cidade);
+
+    const data = document.createElement("p");
+    const d = new Date();
+    const dias = [
+        'Dom',
+        'Seg',
+        'Ter',
+        'Qua',
+        'Qui',
+        'Sex',
+        'Sáb'
+    ]
+    const meses = [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+        'Novembro',
+        'Dezembro'
+    ]
+    data.innerHTML = `${dias[d.getDay()]}, ${d.getDay()} ${meses[d.getMonth()]}`
+    data.classList = "data";
+    localizacao.appendChild(data);
 }
 const pesquisaCidade = (param) => {
     const endpoint2 = `https://api.openweathermap.org/geo/1.0/direct?q=${param}&appid=e9d7d8e62d3d6b589222dfdc4648be38`
