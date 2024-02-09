@@ -5,6 +5,7 @@ const telaIncial = document.querySelector(".tela-inicial")
 const container = document.querySelector(".container")
 const localizacao = document.querySelector(".localizacao")
 const imagemTempo = document.getElementById("imagem-tempo");
+const temperatura = document.querySelector(".temperatura");
 
 botaoPesquisar.onclick = () =>{
     pesquisaCidade(input.value);
@@ -25,23 +26,8 @@ const buscaInfos = (param1, param2) => {
         console.log(dados);
         itensLocalizacao(dados);
         icones(dados);
+        mostraTemperatura(dados);
     })
-}
-
-const icones = (param) => {
-    const icone = document.createElement("img");
-    if(param.weather[0].icon.slice(-1) == "n"){
-        if(param.weather[0].id >= 801 && param.weather[0].id <= 804){
-            icone.src = "../img/nuvens-noite.png" 
-        }
-    }else{
-        if(param.weather[0].id >= 000 && param.weather[0].id <= 804){
-            icone.src = "../img/nuvens-dia.png" 
-        }
-    }
-    
-    imagemTempo.appendChild(icone);
-
 }
 
 const itensLocalizacao = (param) => {
@@ -84,6 +70,32 @@ const itensLocalizacao = (param) => {
     data.classList = "data";
     localizacao.appendChild(data);
 }
+
+const icones = (param) => {
+    const icone = document.createElement("img");
+    icone.classList = "icone";
+    if(param.weather[0].icon.slice(-1) == "n"){
+        if(param.weather[0].id >= 801 && param.weather[0].id <= 804){
+            icone.src = "../img/nuvens-noite.png" 
+        }
+    }else{
+        if(param.weather[0].id >= 000 && param.weather[0].id <= 804){
+            icone.src = "../img/nuvens-dia.png" 
+        }
+    }
+    
+    imagemTempo.appendChild(icone);
+
+}
+
+const mostraTemperatura = (param) => {
+    const temp = document.createElement("p");
+    temp.classList = "temp";
+    temp.innerText = `${Math.round(param.main.temp-273.15)}º`
+    console.log(`${Math.round(param.main.temp-273.15)}º`)
+    temperatura.appendChild(temp)
+}
+
 const pesquisaCidade = (param) => {
     const endpoint2 = `https://api.openweathermap.org/geo/1.0/direct?q=${param}&appid=e9d7d8e62d3d6b589222dfdc4648be38`
     fetch(endpoint2)
