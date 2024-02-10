@@ -44,7 +44,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: 500px;
     width: 300px;
     border: solid black 2px;
@@ -83,12 +83,9 @@
 .data {
     font-size: 12px;
 }
-
-#imagem-tempo{
- 
-}
 .icone{
     width: 110%;
+    /*filter: drop-shadow(8px 6px 12px rgb(95, 95, 95))*/
 }
 .temp{
     color: white;
@@ -96,7 +93,19 @@
 }
 .item-descricao {
     color: white;
-    font-size: 21px;
+    font-size: 23px;
+}
+.feels-like-temp {
+    color: white;
+    font-size: 16px;
+}
+.imagem-reload {
+    width: 25px;
+    filter: invert();
+}
+.botao-reload {
+    background: none;
+    border: none;
 }
 @media (max-width: 600px){
     .tela-inicial{
