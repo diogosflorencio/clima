@@ -94,6 +94,10 @@
     color: white;
     font-size: 92px;
 }
+.item-descricao {
+    color: white;
+    font-size: 21px;
+}
 @media (max-width: 600px){
     .tela-inicial{
         position: absolute;
