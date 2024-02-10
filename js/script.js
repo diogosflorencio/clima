@@ -89,29 +89,29 @@ const icones = (param) => {
     icone.classList = "icone";
     if(param.weather[0].icon.slice(-1) == "n"){
         if(param.weather[0].id >= 801 && param.weather[0].id <= 804){
-            icone.src = "../img/nuvens-noite.png" 
+            icone.src = "img/nuvens-noite.png" 
         }
         else if(param.weather[0].id >= 200 && param.weather[0].id <= 232){
-            icone.src = "../img/tempestade-noite.png" 
+            icone.src = "img/tempestade-noite.png" 
         }
         else if(param.weather[0].id >= 600 && param.weather[0].id <= 800){
-            icone.src = "../img/lua.png" 
+            icone.src = "img/lua.png" 
         }
         else if(param.weather[0].id >= 300 && param.weather[0].id <= 321 || param.weather[0].id >= 500 && param.weather[0].id <= 531){
-            icone.src = "../img/chuva-noite.png" 
+            icone.src = "img/chuva-noite.png" 
         }
     }else{
         if(param.weather[0].id >= 801 && param.weather[0].id <= 804){
-            icone.src = "../img/nuvens-dia.png" 
+            icone.src = "img/nuvens-dia.png" 
         }
         else if(param.weather[0].id >= 200 && param.weather[0].id <= 232){
-            icone.src = "../img/tempestade-dia.png" 
+            icone.src = "img/tempestade-dia.png" 
         }
         else if(param.weather[0].id == 800){
-            icone.src = "../img/sol.png" 
+            icone.src = "img/sol.png" 
         }
         else if(param.weather[0].id >= 300 && param.weather[0].id <= 321 || param.weather[0].id >= 500 && param.weather[0].id <= 531){
-            icone.src = "../img/chuva-dia.png" 
+            icone.src = "img/chuva-dia.png" 
         }
     }
     
@@ -160,7 +160,7 @@ const mudaTela = () => {
 const botaoReload = () => {
     const imagemRealod = document.createElement("img");
     imagemRealod.classList = "imagem-reload"
-    imagemRealod.src = "../img/reload.png";
+    imagemRealod.src = "img/reload.png";
     const botao = document.createElement("button");
     botao.appendChild(imagemRealod);
     botao.classList = "botao-reload"
