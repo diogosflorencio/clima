@@ -6,13 +6,16 @@ const container = document.querySelector(".container")
 const localizacao = document.querySelector(".localizacao")
 const imagemTempo = document.getElementById("imagem-tempo");
 const temperatura = document.querySelector(".temperatura");
+const descricao = document.querySelector(".descricao");
 
 botaoPesquisar.onclick = () =>{
+    limpaTela();
     pesquisaCidade(input.value);
     mudaTela();
 }
 input.addEventListener("keydown", (event) => {
     if(event.key == "Enter"){
+        limpaTela();
         pesquisaCidade(input.value);
     }
 })
@@ -27,7 +30,14 @@ const buscaInfos = (param1, param2) => {
         itensLocalizacao(dados);
         icones(dados);
         mostraTemperatura(dados);
+        mostraDescricao(dados);
     })
+}
+
+const limpaTela = () => {
+    localizacao.innerHTML = "";
+    imagemTempo.innerHTML = "";
+    temperatura.innerHTML = "";
 }
 
 const itensLocalizacao = (param) => {
@@ -78,9 +88,27 @@ const icones = (param) => {
         if(param.weather[0].id >= 801 && param.weather[0].id <= 804){
             icone.src = "../img/nuvens-noite.png" 
         }
+        else if(param.weather[0].id >= 200 && param.weather[0].id <= 232){
+            icone.src = "../img/tempestade-noite.png" 
+        }
+        else if(param.weather[0].id >= 600 && param.weather[0].id <= 800){
+            icone.src = "../img/lua.png" 
+        }
+        else if(param.weather[0].id >= 300 && param.weather[0].id <= 321 || param.weather[0].id >= 500 && param.weather[0].id <= 531){
+            icone.src = "../img/chuva-noite.png" 
+        }
     }else{
-        if(param.weather[0].id >= 000 && param.weather[0].id <= 804){
+        if(param.weather[0].id >= 801 && param.weather[0].id <= 804){
             icone.src = "../img/nuvens-dia.png" 
+        }
+        else if(param.weather[0].id >= 200 && param.weather[0].id <= 232){
+            icone.src = "../img/tempestade-dia.png" 
+        }
+        else if(param.weather[0].id == 800){
+            icone.src = "../img/sol.png" 
+        }
+        else if(param.weather[0].id >= 300 && param.weather[0].id <= 321 || param.weather[0].id >= 500 && param.weather[0].id <= 531){
+            icone.src = "../img/chuva-dia.png" 
         }
     }
     
@@ -94,6 +122,13 @@ const mostraTemperatura = (param) => {
     temp.innerText = `${Math.round(param.main.temp-273.15)}º`
     console.log(`${Math.round(param.main.temp-273.15)}º`)
     temperatura.appendChild(temp)
+}
+
+const mostraDescricao = (param) => {
+    const descricaoClima = document.createElement("p");
+    descricaoClima.innerHTML = param.weather[0].description;
+    descricaoClima.classList = "item-descricao";
+    descricao.appendChild(descricaoClima);
 }
 
 const pesquisaCidade = (param) => {
