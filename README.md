@@ -17,8 +17,8 @@
 O projeto ainda está em desenvolvimento, e as próximas atualizações serão focadas nas seguintes tarefas:
 - [x] Criando projeto
 - [x] Criando README.md
-- [ ] Criação de todas as telas
-- [ ] Posicionando elemento com display flex
+- [x] Criação de todas as telas
+- [x] Posicionando elemento com display flex
 - [ ] Adicionando funcionalidades com JavaScript
 - [ ] Realizar testes e correções
 - [ ] Finalização
