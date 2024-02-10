@@ -19,9 +19,9 @@ O projeto ainda está em desenvolvimento, e as próximas atualizações serão f
 - [x] Criando README.md
 - [x] Criação de todas as telas
 - [x] Posicionando elemento com display flex
-- [ ] Adicionando funcionalidades com JavaScript
-- [ ] Realizar testes e correções
-- [ ] Finalização
+- [x] Adicionando funcionalidades com JavaScript
+- [x] Realizar testes e correções
+- [x] Finalização
 
 ## 💻 Pré-requisitos
 
