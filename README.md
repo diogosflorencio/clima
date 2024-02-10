@@ -6,7 +6,8 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/diogosflorencio/clima?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/diogosflorencio/clima?style=for-the-badge)
 
-<img src="" style="width:100%" alt="Exemplo de imagem">
+<img src="https://github.com/diogosflorencio/clima/assets/33941005/56e93536-eea1-4a86-9ad1-edba1c40bf37" style="width:33%" alt="Exemplo de imagem">
+
 
 
 > Projeto criado utilizando JavaScript, HTML e CSS. O objetivo do projeto é criar um simples site de Clima, praticar o uso de flexbox e o consumo de api no JavaScript.
