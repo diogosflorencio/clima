@@ -7,6 +7,7 @@ const localizacao = document.querySelector(".localizacao")
 const imagemTempo = document.getElementById("imagem-tempo");
 const temperatura = document.querySelector(".temperatura");
 const descricao = document.querySelector(".descricao");
+const feels = document.querySelector(".feels-like");
 
 botaoPesquisar.onclick = () =>{
     limpaTela();
@@ -26,11 +27,11 @@ const buscaInfos = (param1, param2) => {
     .then(dados => dados.json())
     //.then(dados => telaConteudo.innerHTML = dados.name)
     .then(dados => {
-        console.log(dados);
         itensLocalizacao(dados);
         icones(dados);
         mostraTemperatura(dados);
         mostraDescricao(dados);
+        mostraFeelsLike(dados);
     })
 }
 
@@ -38,6 +39,8 @@ const limpaTela = () => {
     localizacao.innerHTML = "";
     imagemTempo.innerHTML = "";
     temperatura.innerHTML = "";
+    feels.innerHTML = "";
+    descricao.innerHTML = "";
 }
 
 const itensLocalizacao = (param) => {
@@ -120,7 +123,6 @@ const mostraTemperatura = (param) => {
     const temp = document.createElement("p");
     temp.classList = "temp";
     temp.innerText = `${Math.round(param.main.temp-273.15)}º`
-    console.log(`${Math.round(param.main.temp-273.15)}º`)
     temperatura.appendChild(temp)
 }
 
@@ -131,6 +133,12 @@ const mostraDescricao = (param) => {
     descricao.appendChild(descricaoClima);
 }
 
+const mostraFeelsLike = (param) =>{
+    const feelsLikeTemp = document.createElement("p");
+    feelsLikeTemp.innerHTML =  `Sensação térmica: ${Math.round(param.main.feels_like-273.15)}º`;
+    feelsLikeTemp.classList = "feels-like-temp"
+    feels.appendChild(feelsLikeTemp);
+}
 const pesquisaCidade = (param) => {
     const endpoint2 = `https://api.openweathermap.org/geo/1.0/direct?q=${param}&appid=e9d7d8e62d3d6b589222dfdc4648be38`
     fetch(endpoint2)
@@ -146,6 +154,19 @@ const mudaTela = () => {
     if(tamanhoTela.matches){
         telaConteudo.style.position = "absolute";
         telaIncial.style.display = "none";
+        botaoReload();
+    }
+}
+const botaoReload = () => {
+    const imagemRealod = document.createElement("img");
+    imagemRealod.classList = "imagem-reload"
+    imagemRealod.src = "../img/reload.png";
+    const botao = document.createElement("button");
+    botao.appendChild(imagemRealod);
+    botao.classList = "botao-reload"
+    telaConteudo.append(botao);
+    botao.onclick = () => {
+        location.reload();
     }
 }
 
